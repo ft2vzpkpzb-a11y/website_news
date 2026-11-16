@@ -12,6 +12,7 @@ was gilt. Nichts aus dieser Datei wird hochgeladen. Keine Passwörter eintragen.
 - Name: Arbeitstitel „Der Überblick“ (Vorschlag von Claude, Entscheidung offen). Steht in `public/index.html` (Kopfzeile, Fußzeile), `werkzeuge/portal.json` und in den Seitentiteln von Kontakt, Impressum, Datenschutz, 404.
 - Adresse (Domain): offen (danach in `werkzeuge/portal.json` eintragen, dann `artikel_bauen.py`)
 - Vorbild für den Stil: klassische Nachrichtenseiten (Wunsch des Auftraggebers)
+- Arbeitsweise des Auftraggebers: Mac mit Terminal; sieht Entwürfe selbst mit `npm start` an (http://127.0.0.1:4174). Anleitungen für den Mac schreiben.
 
 ## Seiten
 
@@ -47,6 +48,7 @@ Neueste zuerst, mit Datum. Wünsche möglichst wörtlich festhalten.
 - Artikel sind Textdateien in `artikel/` (Anleitung: `artikel/ANLEITUNG.md`). `python3 werkzeuge/artikel_bauen.py` erzeugt daraus Artikelseiten, Rubrikseiten, den Bereich `AUTO:startseite` in `index.html` und `sitemap.xml`; Kopfzeile, Fußzeile und Cookie-Fenster kommen aus `index.html`. Erzeugte Seiten tragen einen Vermerk und werden gelöscht, wenn ihr Artikel gelöscht wird.
 - Reihenfolge nach Änderungen: gemeinsame Teile in `index.html` → `seiten_abgleichen.py` (bei CSS oder JS mit `--version`) → `artikel_bauen.py` → `seiten_pruefen.py` und `layout_pruefen.js`.
 - Alle Seiten liegen direkt in `public/` (Adressen ohne Unterordner), damit die Regeln für schöne Adressen in der `.htaccess` unverändert bleiben.
+- Vorschau am eigenen Computer: `npm start` im Projektordner. `package.json` (ohne Pakete) startet `werkzeuge/vorschau.js` (Kopie aus dem Skill website-bauen) auf Port 4174, damit es neben anderen Projekten (4173) laufen kann. Eingerichtet am 2026-11-16 auf Wunsch des Auftraggebers.
 - Kopfzeile: oben der Zeitungskopf mit Datum (kommt aus `main.js`), darunter die Rubrikenleiste. Am Computer gleitet der Zeitungskopf beim Scrollen weg, die Leiste bleibt mit kleinem Namen stehen. Am Handy: Name und Menüknopf.
 - Die Hauptüberschrift (h1) der Startseite ist die Schlagzeile des Aufmachers.
 - Schriften: Playfair Display (Überschriften) und Inter liegen im Projekt; Artikeltext in Georgia (auf den Geräten vorhanden, lädt nichts nach).

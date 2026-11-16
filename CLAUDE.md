@@ -17,3 +17,9 @@ Dieses Projekt ist die Website eines Auftraggebers ohne technische Vorkenntnisse
    Reihenfolge nach Änderungen: gemeinsame Teile nur in `public/index.html`,
    dann `seiten_abgleichen.py` (bei CSS oder JS mit `--version`), dann
    `artikel_bauen.py`, dann prüfen (`seiten_pruefen.py`, `layout_pruefen.js`).
+5. Vorschau am eigenen Computer: Der Auftraggeber arbeitet am Mac mit dem
+   Terminal. Er lädt den Stand des Zweigs als ZIP von GitHub und startet im
+   Projektordner `npm start` (dann im Browser http://127.0.0.1:4174).
+   `package.json` hat keine Pakete und startet `werkzeuge/vorschau.js`, eine
+   Kopie des Vorschauprogramms aus dem Skill website-bauen. Diese Dateien nicht
+   entfernen; sie werden nicht hochgeladen.

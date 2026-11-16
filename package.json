@@ -1,0 +1,9 @@
+{
+  "name": "website-news",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vorschau der Website auf dem eigenen Computer. Auf den Server kommt nur der Ordner public.",
+  "scripts": {
+    "start": "node werkzeuge/vorschau.js --ordner public --port 4174"
+  }
+}
