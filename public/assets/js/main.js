@@ -1,0 +1,672 @@
+/* Skript der Website: Kopfzeile, Handy-Menü, Cookie-Fenster, Karte, Kontaktformular.
+   Kein Inline-Skript in den Seiten verwenden (die Schutz-Einstellungen des Servers
+   erlauben nur diese Datei). Nach jeder Änderung die Versionsangabe „?v=…“ in allen
+   Seiten erhöhen (scripts/seiten_abgleichen.py --version), sonst nutzen Browser
+   weiter die alte Fassung. */
+(function () {
+  'use strict';
+
+  /* ---------- Einstellungen dieser Website ---------- */
+  // Google Ads: Kennung des Kontos (Form „AW-1234567890“). Leer = Google Ads wird
+  // nicht verwendet. Mit Kennung braucht es zusätzlich: den Schalter „Google Ads“
+  // im Cookie-Fenster (data-cookie-category="ads"), die Google-Adressen in der
+  // Content-Security-Policy (.htaccess) und einen Absatz in der Datenschutzerklärung.
+  var GOOGLE_ADS_ID = '';
+  // Conversion-Aktionen im Google-Ads-Konto (Zielvorhaben → Conversions). Gemeldet
+  // wird nur, DASS etwas geschehen ist, nie Inhalte aus dem Formular, und nur,
+  // solange die Zustimmung zu „Google Ads“ besteht. Leeres Label = keine Meldung.
+  var GOOGLE_ADS_CONVERSIONS = {
+    anfrage: '', // nach erfolgreichem Versand des Kontaktformulars
+    telefon: ''  // Klick auf eine Telefonnummer
+  };
+
+  /* ---------- Jahreszahl in der Fußzeile ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Hero-Diashow ---------- */
+  var slideshow = document.getElementById('hero-slideshow');
+  if (slideshow) {
+    var slides = slideshow.querySelectorAll('.hero-slide');
+    if (slides.length > 1) {
+      var current = 0;
+      window.setInterval(function () {
+        slides[current].classList.remove('is-active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+      }, 5000); // alle 5 Sekunden zum nächsten Bild
+    }
+  }
+
+  /* ---------- Bewertungen (rotierend) ---------- */
+  var reviews = document.getElementById('reviews');
+  if (reviews) {
+    var rSlides = reviews.querySelectorAll('.review-slide');
+    var dotsWrap = document.getElementById('reviews-dots');
+    if (rSlides.length > 1) {
+      var rIdx = 0;
+      var rTimer;
+      var dots = [];
+
+      var goTo = function (n) {
+        rSlides[rIdx].classList.remove('is-active');
+        if (dots[rIdx]) dots[rIdx].classList.remove('is-active');
+        rIdx = (n + rSlides.length) % rSlides.length;
+        rSlides[rIdx].classList.add('is-active');
+        if (dots[rIdx]) dots[rIdx].classList.add('is-active');
+      };
+      var startTimer = function () {
+        rTimer = window.setInterval(function () { goTo(rIdx + 1); }, 7000);
+      };
+      var resetTimer = function () { window.clearInterval(rTimer); startTimer(); };
+
+      if (dotsWrap) {
+        rSlides.forEach(function (_, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Bewertung ' + (i + 1));
+          if (i === 0) b.classList.add('is-active');
+          b.addEventListener('click', function () { goTo(i); resetTimer(); });
+          dotsWrap.appendChild(b);
+          dots.push(b);
+        });
+      }
+      startTimer();
+    }
+  }
+
+  /* ---------- Header scroll state + Zurück-nach-oben ---------- */
+  var header = document.querySelector('.site-header');
+  var backToTop = document.getElementById('back-to-top');
+
+  var footer = document.querySelector('.site-footer');
+
+  var onWindowScroll = function () {
+    var y = window.scrollY;
+    if (header) header.classList.toggle('is-scrolled', y > 12);
+    if (backToTop) {
+      backToTop.classList.toggle('is-visible', y > window.innerHeight * 0.6);
+      // Sobald die dunkle Fußzeile ins Bild kommt, wandert „Nach oben“ mit
+      // nach oben und hört vor der Fußzeile auf.
+      var lift = footer ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top) : 0;
+      backToTop.style.setProperty('--btt-lift', lift + 'px');
+    }
+  };
+  onWindowScroll();
+  window.addEventListener('scroll', onWindowScroll, { passive: true });
+  window.addEventListener('resize', onWindowScroll);
+  // Nachladende Bilder verschieben die Fußzeile ohne Scrollen: dann neu ausrichten.
+  if (window.ResizeObserver) new ResizeObserver(onWindowScroll).observe(document.body);
+  window.addEventListener('load', onWindowScroll);
+
+  if (backToTop) {
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---------- Mobile nav ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.main-nav');
+  var scrim = document.querySelector('.nav-scrim');
+
+  function closeNav() {
+    if (!toggle || !nav) return;
+    toggle.classList.remove('is-open');
+    nav.classList.remove('is-open');
+    document.documentElement.classList.remove('nav-open');
+    if (scrim) scrim.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      document.documentElement.classList.toggle('nav-open', open);
+      if (scrim) scrim.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    if (scrim) scrim.addEventListener('click', closeNav);
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeNav);
+    });
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  // Inhalte sind ohne JavaScript immer sichtbar: erst JS selbst blendet sie
+  // kurz aus, bevor sie beim Scrollen wieder eingeblendet werden. Prüfung via
+  // scroll/resize-Events statt IntersectionObserver, da dieser bei sehr
+  // schnellen bzw. sprunghaften Scroll-Bewegungen einzelne Elemente auslassen kann.
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (revealEls.length) {
+    revealEls.forEach(function (el) { el.classList.add('reveal-pending'); });
+
+    var ticking = false;
+    var checkReveal = function () {
+      var vh = window.innerHeight;
+      revealEls = revealEls.filter(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < vh * 0.92 && rect.bottom > 0) {
+          el.classList.remove('reveal-pending');
+          el.classList.add('is-visible');
+          return false;
+        }
+        return true;
+      });
+      ticking = false;
+      if (!revealEls.length) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    };
+    var onScroll = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(checkReveal);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    checkReveal();
+  }
+
+  /* ---------- Cookie consent banner ---------- */
+  var CONSENT_KEY = 'cookie_consent';
+  // Gesetzt, sobald jemand die Cookie-Einstellungen erneut öffnet: bis zu einer
+  // neuen Entscheidung bleibt die Website gesperrt – in allen Tabs, auch im
+  // Tab mit der Datenschutzerklärung, der aus dem Cookie-Fenster geöffnet wird.
+  var REVIEW_KEY = 'cookie_review';
+  var banner = document.getElementById('cookie-banner');
+  var cookieBackdrop = document.getElementById('cookie-backdrop');
+
+
+  function getConsent() {
+    try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); }
+    catch (e) { return null; }
+  }
+  function setConsent(value) {
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(value));
+      localStorage.removeItem(REVIEW_KEY);
+    } catch (e) {}
+    applyConsent(value);
+  }
+  function decisionPending() {
+    try { return !getConsent() || localStorage.getItem(REVIEW_KEY) === '1'; }
+    catch (e) { return !getConsent(); }
+  }
+  // Solange das Cookie-Fenster offen ist, ist die übrige Seite vollständig
+  // gesperrt: nicht anklickbar, nicht per Tastatur (Tab) erreichbar, für
+  // Vorleseprogramme ausgeblendet und nicht scrollbar (auch auf iPhones).
+  // Ausnahme Datenschutzerklärung (<main data-cookie-readable>): Der Text darf
+  // vor der Entscheidung gelesen und gescrollt werden, das Cookie-Fenster sitzt
+  // dann unten. Menü, Fußzeile und Links auf andere Seiten bleiben gesperrt.
+  var readableMain = document.querySelector('main[data-cookie-readable]');
+  var pageLocked = false;
+  var readingMode = false;
+  function updateReadingSpace() {
+    var space = readingMode && banner ? banner.offsetHeight + 32 : 0;
+    document.documentElement.style.setProperty('--cookie-reading-space', space + 'px');
+  }
+  function setPageLocked(locked) {
+    pageLocked = locked;
+    readingMode = locked && !!readableMain;
+    document.documentElement.classList.toggle('cookie-locked', locked && !readingMode);
+    document.documentElement.classList.toggle('cookie-reading', readingMode);
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el === banner || el === cookieBackdrop || el.tagName === 'SCRIPT') return;
+      if (locked && !(readingMode && el === readableMain)) el.setAttribute('inert', '');
+      else el.removeAttribute('inert');
+    });
+    if (readableMain) {
+      readableMain.querySelectorAll('a[href]').forEach(function (a) {
+        if (a.origin !== location.origin || a.pathname === location.pathname) return;
+        if (readingMode) a.setAttribute('inert', '');
+        else a.removeAttribute('inert');
+      });
+    }
+    updateReadingSpace();
+  }
+  function isOpenPart(el) {
+    return !!el && readingMode && readableMain.contains(el) && !el.closest('[inert]');
+  }
+  function drawAttention() {
+    if (!banner) return;
+    banner.classList.remove('is-attention');
+    void banner.offsetWidth;
+    banner.classList.add('is-attention');
+    banner.focus({ preventScroll: true });
+  }
+  // Ersatz für ältere Browser ohne „inert“: Fokus bleibt im Cookie-Fenster.
+  document.addEventListener('focusin', function (e) {
+    if (pageLocked && banner && !banner.contains(e.target) && !isOpenPart(e.target)) {
+      banner.focus({ preventScroll: true });
+    }
+  });
+  // Lesemodus: Klicks auf gesperrte Teile bewirken nichts, das Cookie-Fenster
+  // macht kurz auf sich aufmerksam.
+  document.addEventListener('click', function (e) {
+    if (!readingMode || !banner || banner.contains(e.target) || isOpenPart(e.target)) return;
+    e.preventDefault();
+    drawAttention();
+  }, true);
+  document.addEventListener('pointerdown', function (e) {
+    if (!readingMode || !banner || banner.contains(e.target)) return;
+    var hitsLocked = Array.prototype.some.call(document.querySelectorAll('body > [inert], main [inert]'), function (el) {
+      var r = el.getBoundingClientRect();
+      return r.width > 0 && e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    });
+    if (hitsLocked) drawAttention();
+  });
+  window.addEventListener('resize', updateReadingSpace);
+  if (window.ResizeObserver && banner) new ResizeObserver(updateReadingSpace).observe(banner);
+  // Inhaltsblocker (z. B. in Safari: AdGuard, 1Blocker, Wipr, „Ablenkungen
+  // ausblenden“) verstecken Cookie-Fenster über Filterlisten. Dann darf die
+  // Seite nicht gesperrt bleiben: Sie bleibt benutzbar, und optionale Dienste
+  // bleiben aus, weil keine Zustimmung vorliegt.
+  function bannerRendered() {
+    if (!banner) return false;
+    if (typeof banner.checkVisibility === 'function' && !banner.checkVisibility({ visibilityProperty: true })) return false;
+    var style = window.getComputedStyle(banner);
+    return style.display !== 'none' && style.visibility !== 'hidden' && banner.getClientRects().length > 0;
+  }
+  // Soll das Fenster sichtbar sein, ist es aber nicht (Blocker), dann Sperre UND
+  // grauen Hintergrund entfernen. Manche Blocker verstecken nur das Fenster,
+  // nicht den Hintergrund; ohne diese Prüfung bliebe die Seite grau und
+  // nicht anklickbar.
+  function unlockIfBannerHidden() {
+    if (!banner || !banner.classList.contains('is-visible') || bannerRendered()) return;
+    if (pageLocked) setPageLocked(false);
+    if (cookieBackdrop) cookieBackdrop.classList.remove('is-visible');
+  }
+  function showBanner() {
+    if (banner) banner.classList.add('is-visible');
+    setPageLocked(true);
+    if (cookieBackdrop) cookieBackdrop.classList.toggle('is-visible', !readingMode);
+    if (banner) {
+      if (readingMode) banner.removeAttribute('aria-modal');
+      else banner.setAttribute('aria-modal', 'true');
+      banner.setAttribute('tabindex', '-1');
+      banner.focus({ preventScroll: true });
+    }
+    // Erst jetzt prüfen (Fenster und Hintergrund sind gesetzt). Manche Blocker
+    // greifen erst nach dem Laden, deshalb zusätzlich laufend nachsehen.
+    unlockIfBannerHidden();
+  }
+  setInterval(unlockIfBannerHidden, 1000);
+  window.addEventListener('load', unlockIfBannerHidden);
+  function hideBanner() {
+    if (banner) {
+      banner.classList.remove('is-visible');
+      banner.removeAttribute('aria-modal');
+    }
+    if (cookieBackdrop) cookieBackdrop.classList.remove('is-visible');
+    setPageLocked(false);
+  }
+
+  // Google Ads: misst, ob Besucher über eine Anzeige kommen. Der Google-Tag
+  // lädt erst nach Zustimmung. Remarketing bleibt aus (ad_personalization),
+  // Analyse-Speicher ebenso (analytics_storage). ad_user_data bleibt bewusst
+  // abgelehnt: Sonst schickt der Tag (Einstellung im Google-Ads-Konto) die
+  // E-Mail-Adresse aus dem Kontaktformular gehasht an Google.
+  var adsLoaded = false;
+  function loadGoogleAds() {
+    if (!GOOGLE_ADS_ID) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    var granted = { ad_storage: 'granted', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' };
+    if (adsLoaded) {
+      window.gtag('consent', 'update', granted);
+      return;
+    }
+    adsLoaded = true;
+    window.gtag('consent', 'default', granted);
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_ADS_ID);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID;
+    document.head.appendChild(s);
+  }
+
+  // Widerruf: Ein bereits geladener Google-Tag bekommt sofort „abgelehnt“,
+  // seine Cookies (_gcl_…) werden gelöscht.
+  function revokeGoogleAds() {
+    if (adsLoaded) {
+      window.gtag('consent', 'update', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    }
+    removeCookies(/^_gcl_/);
+  }
+
+  // Meldet eine Conversion an Google Ads (Name aus GOOGLE_ADS_CONVERSIONS). Ohne
+  // aktuelle Zustimmung oder ohne geladenen Google-Tag passiert nichts, auch kein
+  // Aufruf ohne Cookies: Die Zustimmung wird bei jeder Meldung neu gelesen.
+  function reportConversion(name) {
+    var label = GOOGLE_ADS_CONVERSIONS[name];
+    var consent = getConsent();
+    if (!label || !adsLoaded || !consent || !consent.ads || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: GOOGLE_ADS_ID + '/' + label,
+      value: 1.0,
+      currency: 'EUR'
+    });
+  }
+
+  // Klick auf eine Telefonnummer (tel:-Link) auf irgendeiner Seite.
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (link) reportConversion('telefon');
+  });
+
+  // Löscht Cookies für diese Adresse und ihre übergeordnete Domain (Google setzt
+  // sie für die Hauptdomain, z. B. ".ihre-domain.at").
+  function removeCookies(pattern) {
+    var parts = location.hostname.split('.');
+    var domains = [''];
+    for (var i = 0; i < parts.length - 1; i++) domains.push('; domain=.' + parts.slice(i).join('.'));
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (!pattern.test(name)) return;
+      domains.forEach(function (d) { document.cookie = name + '=; Max-Age=0; path=/' + d; });
+    });
+  }
+
+  // Google-Karte: erst mit Zustimmung laden, bei Widerruf wieder entfernen. Bis
+  // dahin steht ein Platzhalter mit „Karte laden“ an ihrer Stelle. Die Adresse der
+  // Karte steht als data-map-src im HTML, nie als fertiger <iframe> (der würde
+  // sofort laden und die IP-Adresse an Google übertragen).
+  function updateMaps(allowed) {
+    document.querySelectorAll('.map-wrap[data-map-src]').forEach(function (wrap) {
+      var frame = wrap.querySelector('iframe');
+      var placeholder = wrap.querySelector('.map-placeholder');
+      if (allowed && !frame) {
+        frame = document.createElement('iframe');
+        frame.src = wrap.getAttribute('data-map-src');
+        frame.title = wrap.getAttribute('data-map-title') || 'Karte';
+        frame.loading = 'lazy';
+        frame.referrerPolicy = 'no-referrer-when-downgrade';
+        wrap.appendChild(frame);
+      } else if (!allowed && frame) {
+        frame.remove();
+      }
+      if (placeholder) placeholder.hidden = allowed;
+    });
+  }
+
+  function applyConsent(consent) {
+    updateMaps(!!(consent && consent.maps));
+    if (!consent) return;
+    if (consent.ads) loadGoogleAds(); else revokeGoogleAds();
+  }
+
+  function setToggleStates(consent) {
+    document.querySelectorAll('[data-cookie-category]').forEach(function (input) {
+      var cat = input.getAttribute('data-cookie-category');
+      input.checked = !!(consent && consent[cat]);
+    });
+  }
+
+  if (banner) {
+    var existingConsent = getConsent();
+    // Bisherige Entscheidung gilt weiter, bis sie geändert wird.
+    if (existingConsent) applyConsent(existingConsent);
+    if (decisionPending()) {
+      // Sofort zeigen (keine Verzögerung): solange keine Entscheidung vorliegt,
+      // soll die Website auf jeder Seite von Anfang an gesperrt sein.
+      showBanner();
+    }
+    setToggleStates(existingConsent);
+
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+    var saveBtn = document.getElementById('cookie-save');
+    var settingsToggle = document.getElementById('cookie-details-toggle');
+    var categoriesPanel = document.getElementById('cookie-categories');
+    var saveRow = document.getElementById('cookie-save-row');
+
+    function collapsePanel() {
+      if (!settingsToggle || !categoriesPanel) return;
+      categoriesPanel.setAttribute('hidden', '');
+      if (saveRow) saveRow.setAttribute('hidden', '');
+      settingsToggle.setAttribute('aria-expanded', 'false');
+      settingsToggle.textContent = 'Einstellungen anzeigen';
+      document.querySelectorAll('[data-cookie-disclosure]').forEach(function (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        var details = btn.closest('.cookie-category').querySelector('.cookie-category__details');
+        if (details) details.classList.remove('is-open');
+      });
+    }
+
+    // Alle Schalter des Cookie-Fensters auf einmal an- oder abwählen. Welche
+    // Dienste es gibt, steht nur im HTML (data-cookie-category).
+    function consentForAll(allowed) {
+      var consent = { necessary: true, ts: Date.now() };
+      document.querySelectorAll('[data-cookie-category]').forEach(function (input) {
+        consent[input.getAttribute('data-cookie-category')] = allowed;
+      });
+      return consent;
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', function () {
+      var consent = consentForAll(true);
+      setConsent(consent);
+      setToggleStates(consent);
+      hideBanner();
+      collapsePanel();
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function () {
+      var consent = consentForAll(false);
+      setConsent(consent);
+      setToggleStates(consent);
+      hideBanner();
+      collapsePanel();
+    });
+    if (saveBtn) saveBtn.addEventListener('click', function () {
+      var consent = { necessary: true, ts: Date.now() };
+      document.querySelectorAll('[data-cookie-category]').forEach(function (input) {
+        consent[input.getAttribute('data-cookie-category')] = input.checked;
+      });
+      setConsent(consent);
+      hideBanner();
+      collapsePanel();
+    });
+    if (settingsToggle && categoriesPanel) settingsToggle.addEventListener('click', function () {
+      var willOpen = categoriesPanel.hasAttribute('hidden');
+      if (willOpen) {
+        categoriesPanel.removeAttribute('hidden');
+        if (saveRow) saveRow.removeAttribute('hidden');
+        settingsToggle.setAttribute('aria-expanded', 'true');
+        settingsToggle.textContent = 'Einstellungen ausblenden';
+      } else {
+        categoriesPanel.setAttribute('hidden', '');
+        if (saveRow) saveRow.setAttribute('hidden', '');
+        settingsToggle.setAttribute('aria-expanded', 'false');
+        settingsToggle.textContent = 'Einstellungen anzeigen';
+      }
+    });
+
+    document.querySelectorAll('[data-cookie-disclosure]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var details = btn.closest('.cookie-category').querySelector('.cookie-category__details');
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        if (details) details.classList.toggle('is-open', !open);
+      });
+    });
+
+    document.querySelectorAll('[data-open-cookie-settings]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        try { localStorage.setItem(REVIEW_KEY, '1'); } catch (err) {}
+        collapsePanel();
+        setToggleStates(getConsent());
+        showBanner();
+      });
+    });
+
+    // Knopf „Karte laden“ im Platzhalter: Zustimmung nur für Google Maps,
+    // alle übrigen Einstellungen bleiben unverändert.
+    document.querySelectorAll('[data-map-enable]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var consent = getConsent() || { necessary: true };
+        consent.maps = true;
+        consent.ts = Date.now();
+        setConsent(consent);
+        setToggleStates(consent);
+      });
+    });
+
+    // Seite über „Zurück“/„Vor“ aus dem Browser-Speicher wiederhergestellt:
+    // ohne Entscheidung bleibt sie gesperrt.
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted && decisionPending()) showBanner();
+    });
+
+    // Entscheidung in einem anderen Tab getroffen (z. B. im Tab mit der
+    // Datenschutzerklärung): auch diesen Tab sofort freigeben.
+    // Umgekehrt: Einstellungen in einem anderen Tab geöffnet -> hier ebenfalls sperren.
+    window.addEventListener('storage', function (e) {
+      if (e.key !== CONSENT_KEY && e.key !== REVIEW_KEY) return;
+      var consent = getConsent();
+      setToggleStates(consent);
+      if (decisionPending()) {
+        collapsePanel();
+        showBanner();
+      } else {
+        applyConsent(consent);
+        collapsePanel();
+        hideBanner();
+      }
+    });
+  }
+
+  /* ---------- Contact form ---------- */
+  var form = document.getElementById('contact-form');
+  if (form) {
+    var statusBox = document.getElementById('form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    function setStatus(message, type) {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.className = 'form-status is-visible is-' + type;
+    }
+
+    // Gleiche Regel wie im Server (contact.php EMAIL_PATTERN)
+    var EMAIL_PATTERN = /^[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$/;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var requiredFields = [form.name, form.email, form.message, form.privacy];
+
+    // Markiert ein Pflichtfeld als fehlend (rot, mit Hinweis darunter) oder hebt das auf.
+    function markField(field, isInvalid) {
+      var box = field.type === 'checkbox' ? field.closest('.form-check') : field.closest('.form-field');
+      var hint = document.getElementById(field.id + '-error');
+      if (box) {
+        box.classList.remove('is-invalid');
+        if (isInvalid) { void box.offsetWidth; box.classList.add('is-invalid'); } // Aufleuchten jedes Mal neu starten
+      }
+      if (hint) hint.hidden = !isInvalid;
+      if (isInvalid) {
+        field.setAttribute('aria-invalid', 'true');
+        if (hint) field.setAttribute('aria-describedby', hint.id);
+      } else {
+        field.removeAttribute('aria-invalid');
+        field.removeAttribute('aria-describedby');
+      }
+    }
+
+    // Sobald ein markiertes Feld ausgefüllt bzw. angehakt ist, verschwindet die Markierung.
+    requiredFields.forEach(function (field) {
+      field.addEventListener(field.type === 'checkbox' ? 'change' : 'input', function () {
+        if (field.getAttribute('aria-invalid') !== 'true') return;
+        var ok = field.type === 'checkbox' ? field.checked
+          : field === form.email ? EMAIL_PATTERN.test(field.value.trim()) : field.value.trim() !== '';
+        if (ok) markField(field, false);
+        if (!form.querySelector('[aria-invalid="true"]') && statusBox && statusBox.classList.contains('is-error')) {
+          setStatus('', ''); statusBox.className = 'form-status';
+        }
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (form.website && form.website.value) return; // honeypot
+
+      var data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone ? form.phone.value.trim() : '',   // Telefon und Auswahlfeld sind freiwillig
+        topic: form.topic ? form.topic.value : '',
+        message: form.message.value.trim(),
+        privacy: form.privacy.checked
+      };
+
+      // Fehlende Pflichtfelder rot markieren und zum ersten davon springen
+      var invalid = [];
+      if (!data.name) invalid.push(form.name);
+      if (!EMAIL_PATTERN.test(data.email)) invalid.push(form.email);
+      if (!data.message) invalid.push(form.message);
+      if (!data.privacy) invalid.push(form.privacy);
+      requiredFields.forEach(function (field) { markField(field, invalid.indexOf(field) !== -1); });
+      if (invalid.length) {
+        setStatus(invalid.length === 1 && invalid[0] === form.privacy
+          ? 'Bitte bestätigen Sie noch die Datenschutzerklärung.'
+          : 'Bitte ergänzen Sie die rot markierten Felder.', 'error');
+        invalid[0].scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+        invalid[0].focus({ preventScroll: true });
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet …';
+      setStatus('', '');
+      statusBox.className = 'form-status';
+
+      // Die .htaccess leitet /api/contact auf das PHP-Skript um. Greift die
+      // Regel beim Hoster nicht, wird das Skript direkt angesprochen.
+      function post(url) {
+        return fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      }
+
+      post('/api/contact')
+        .then(function (res) {
+          if (res.status === 404 || res.status === 405 || res.status === 501) {
+            return post('/api/contact.php');
+          }
+          return res;
+        })
+        .then(function (res) {
+          return res.text().then(function (raw) {
+            var body = {};
+            try { body = raw ? JSON.parse(raw) : {}; } catch (err) { /* keine JSON-Antwort */ }
+            return { ok: res.ok, body: body };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            setStatus('Vielen Dank! Ihre Anfrage wurde übermittelt. Wir melden uns so rasch wie möglich.', 'success');
+            form.reset();
+            reportConversion('anfrage'); // nur nach erfolgreichem Versand
+          } else {
+            setStatus(result.body && result.body.error ? result.body.error : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.', 'error');
+          }
+        })
+        .catch(function () {
+          setStatus('Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.', 'error');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Anfrage senden';
+        });
+    });
+  }
+})();

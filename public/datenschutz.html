@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung | [[NAME]]</title>
+<meta name="description" content="Datenschutzerklärung von [[NAME]].">
+<!-- GEMEINSAM:kopf -->
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/style.css?v=2026-11-16">
+<!-- /GEMEINSAM:kopf -->
+</head>
+<body>
+
+<!-- GEMEINSAM:kopfzeile -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        <li><a href="/">Startseite</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+      <a href="/kontakt" class="btn btn--primary">Termin vereinbaren</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<div class="nav-scrim" id="nav-scrim"></div>
+<!-- /GEMEINSAM:kopfzeile -->
+
+<main data-cookie-readable>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="title--long-word">Datenschutzerklärung</h1>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="legal-content">
+        <!-- Den Text der Datenschutzerklärung gibt der Auftraggeber vor oder gibt ihn frei
+             (rechtlicher Text). Technische Tatsachen, die darin vorkommen müssen, stehen in
+             references/technik.md im Skill website-bauen (Abschnitt „Was die Website technisch tut“).
+             Diese Seite ist vor der Cookie-Entscheidung lesbar (data-cookie-readable am <main>). -->
+        <p>[[TEXT DER DATENSCHUTZERKLÄRUNG VOM AUFTRAGGEBER]]</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- GEMEINSAM:fusszeile -->
+<button class="back-to-top" id="back-to-top" aria-label="Zurück zum Seitenanfang">
+  <span class="back-to-top__label">Nach oben</span>
+  <span class="back-to-top__line" aria-hidden="true"></span>
+</button>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand">
+          <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
+        </a>
+        <p>[[KURZBESCHREIBUNG, ein bis zwei Sätze]]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="/">Startseite</a></li>
+          <li><a href="/kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>[[STRASSE]]<br>[[PLZ ORT]]</li>
+          <li><a href="tel:[[TELEFON-LINK]]">[[TELEFON]]</a></li>
+          <li><a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> [[NAME]]</span>
+      <div class="legal-links">
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutzerklärung</a>
+        <a href="#" data-open-cookie-settings>Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /GEMEINSAM:fusszeile -->
+
+<!-- GEMEINSAM:cookie -->
+<div class="cookie-backdrop" id="cookie-backdrop"></div>
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <!-- Text und Schalter scrollen, wenn der Platz nicht reicht; die Knöpfe darunter bleiben immer sichtbar -->
+  <div class="cookie-banner__scroll">
+    <div class="cookie-banner__header">
+      <h3>Cookie-Einstellungen</h3>
+    </div>
+    <p>Wir verwenden Cookies, um Ihr Erlebnis zu verbessern, während Sie unsere Website nutzen. Die als notwendig kategorisierten Cookies werden benötigt, um die korrekte Funktionalität der Website sicherzustellen. Mehr Informationen finden Sie in unserer <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> (öffnet in einem neuen Tab).</p>
+
+    <div class="cookie-categories" id="cookie-categories" hidden>
+      <div class="cookie-category">
+        <div class="cookie-category__row">
+          <span class="cookie-category__name">Technisch notwendige</span>
+          <span class="cookie-category__badge">Immer aktiv</span>
+        </div>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category__row">
+          <button type="button" class="cookie-category__disclosure" data-cookie-disclosure aria-expanded="false">
+            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Google Maps</span>
+          </button>
+          <label class="cookie-switch">
+            <input type="checkbox" data-cookie-category="maps">
+            <span class="cookie-switch__track"></span>
+            <span class="sr-only">Google Maps aktivieren</span>
+          </label>
+        </div>
+        <div class="cookie-category__details">
+          <div class="cookie-detail-row"><span>Name</span><span>Google Maps</span></div>
+          <div class="cookie-detail-row"><span>Anbieter</span><span>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland</span></div>
+          <div class="cookie-detail-row"><span>Zweck</span><span>Zeigt auf der Kontaktseite eine Karte mit unserem Standort. Beim Laden der Karte wird Ihre IP-Adresse an Google übermittelt, und Google kann Cookies setzen.</span></div>
+          <div class="cookie-detail-row"><span>Datenschutzerklärung</span><span><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cookie-banner__footer">
+    <div class="cookie-actions">
+      <button class="btn btn--primary" id="cookie-accept">Akzeptieren</button>
+      <button class="btn btn--outline" id="cookie-reject">Alle Ablehnen</button>
+      <button class="cookie-more-link" id="cookie-details-toggle" aria-expanded="false">Einstellungen anzeigen</button>
+    </div>
+    <div class="cookie-actions" id="cookie-save-row" hidden>
+      <button class="btn btn--primary btn--block" id="cookie-save">Präferenzen speichern</button>
+    </div>
+  </div>
+</div>
+<!-- /GEMEINSAM:cookie -->
+
+<!-- GEMEINSAM:skript -->
+<script src="/assets/js/main.js?v=2026-11-16"></script>
+<!-- /GEMEINSAM:skript -->
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Zugangsdaten gehören nie ins Projekt (sie liegen nur auf dem Server)
+public/api/config.php
+.env
+*.log
+
+# Arbeitsdateien: Upload-Pakete, Bildschirmfotos, Programmpakete
+/upload/
+/vorschau/
+*.zip
+node_modules/

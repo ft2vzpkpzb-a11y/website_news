@@ -1,0 +1,102 @@
+# Einstellungen für klassisches Apache-Webhosting (A1 mit Plesk, World4You, cPanel …).
+# Diese Datei heißt auf dem Server „.htaccess“ und liegt im Hauptordner der Website.
+# Jede Änderung zuerst in der Apache-Testumgebung prüfen: Ein Fehler hier legt
+# die ganze Website lahm (Fehler 500 auf allen Seiten).
+
+# Keine Ordnerinhalte auflisten, wenn eine Adresse auf einen Ordner zeigt.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Schutz vor Lücken im PHP-Programm des Servers (z. B. „PHP2Shell“, 10/2026).
+  # Solche Lücken greifen schon beim Einlesen einer Anfrage, bevor das
+  # Formular-Skript läuft. Deshalb erreicht nur das PHP, was das Formular
+  # wirklich schickt: POST, Inhalt JSON, höchstens 20 000 Byte. Datei-Uploads
+  # (multipart) und alles andere weist der Webserver selbst ab. Das ersetzt
+  # nicht das PHP-Update beim Hoster, verkleinert aber die Angriffsfläche.
+  #
+  # Außer dem Formular-Skript führt diese Website kein PHP aus. Jede andere
+  # .php-Adresse (auch Reste einer früheren Website) gibt es daher nicht.
+  RewriteRule ^(?!api/contact\.php$).+\.php(/.*)?$ - [R=404,L,NC]
+  RewriteCond %{REQUEST_METHOD} !=POST
+  RewriteRule ^api/contact(\.php)?(/.*)?$ - [R=405,L]
+  RewriteCond %{HTTP:Content-Type} !^application/json [NC]
+  RewriteRule ^api/contact(\.php)?(/.*)?$ - [R=415,L]
+  RewriteCond %{HTTP:Content-Length} ^[0-9]{6,}$ [OR]
+  RewriteCond %{HTTP:Content-Length} ^(2000[1-9]|200[1-9][0-9]|20[1-9][0-9]{2}|2[1-9][0-9]{3}|[3-9][0-9]{4})$
+  RewriteRule ^api/contact(\.php)?(/.*)?$ - [R=413,L]
+
+  # Das Formular sendet an /api/contact – hier auf das PHP-Skript umleiten.
+  RewriteRule ^api/contact/?$ /api/contact.php [L]
+
+  # Adressen einer früheren Website: auf die neue Seite umleiten (301), damit
+  # Lesezeichen und Google-Treffer weiter funktionieren. Seiten ohne Nachfolger
+  # melden „gibt es nicht mehr“ (410), dann nimmt Google sie rasch heraus.
+  # Beispiele (anpassen oder löschen):
+  #   RewriteRule ^alte-adresse/?$ /neue-seite [R=301,L]
+  #   RewriteRule ^(alte-seite-a|alte-seite-b)/?$ - [G,L]
+
+  # Schöne Adressen ohne „.html“ (/kontakt statt /kontakt.html).
+  # 1. Adressen mit .html dauerhaft umleiten. THE_REQUEST ist die Anfrage des
+  #    Browsers, nicht die interne Umschreibung unten (sonst Endlosschleife). Nur
+  #    einfache Namen, damit niemand über diese Weiterleitung auf fremde Seiten lenkt.
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+([a-z0-9-]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+  # 2. Schrägstrich am Ende entfernen, wenn es die Seite gibt (/kontakt/ → /kontakt).
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([a-z0-9-]+)/$ /$1 [R=301,L]
+  # 3. /kontakt intern aus kontakt.html ausliefern.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([a-z0-9-]+)$ $1.html [L]
+</IfModule>
+
+# Zugangsdaten, Vorlagen und versehentliche Kopien davon niemals ausliefern
+# (z. B. config.php, config.example.php, config.php.txt, config.php.bak,
+# config.php~). Ebenso versteckte Dateien wie .htaccess oder .env.
+<FilesMatch "(^config.*|~$|\.(bak|old|orig|save|swp|tmp|log|md)$|^\.)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+# Schutz-Einstellungen (Sicherheits-Header).
+# Die Content-Security-Policy sagt dem Browser, von welchen Servern er Inhalte
+# laden darf: hier nur vom eigenen Server, dazu die Google-Karte als Rahmen
+# (lädt erst nach Zustimmung). Kommt ein Dienst dazu, werden genau dessen
+# Adressen ergänzt (siehe references/technik.md im Skill website-bauen) und
+# der Dienst in Cookie-Fenster und Datenschutzerklärung aufgenommen.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # Browser merken sich für ein Jahr, die Seite nur verschlüsselt aufzurufen
+  # (wird nur bei HTTPS-Aufrufen gesendet). HTTPS selbst wird im Kundenbereich
+  # des Hosters erzwungen, nicht hier: Bei A1 sitzt ein nginx davor, und eine
+  # Umleitung in dieser Datei würde endlos im Kreis laufen.
+  Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+</IfModule>
+
+# Seiten, Stil und Skript bei jedem Aufruf kurz beim Server nachfragen lassen
+# (unverändert: kurze Antwort 304, sonst die neue Fassung). Der Hoster gibt
+# sonst 30 Tage vor, und Änderungen kämen erst nach Wochen bei Besuchern an.
+# Bilder und Schriften dürfen weiter lange im Zwischenspeicher bleiben.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+    Header unset Expires
+  </FilesMatch>
+</IfModule>
