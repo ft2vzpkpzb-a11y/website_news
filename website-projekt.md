@@ -29,14 +29,16 @@ was gilt. Nichts aus dieser Datei wird hochgeladen. Keine Passwörter eintragen.
 
 Neueste zuerst, mit Datum. Wünsche möglichst wörtlich festhalten.
 
-- 2026-11-16: Rubriken: „Logisch ist, dass Wirtschaft ein Teil drin sein soll und Politik. Ja, den Rest lasse ich mal dir zur Verfügung.“ Claude hat dazu vorgeschlagen: Chronik, Wissen, Digital, Kultur, Sport, Meinung (Bestätigung offen).
+- 2026-11-16: Name: „Später, mit der Domain“. Der Arbeitstitel „Der Überblick“ bleibt stehen, bis die Internetadresse feststeht; erst dann wird der Name entschieden.
+- 2026-11-16: Akzentfarbe: „A: Rot“ (#B3121E). Gezeigt wurde daneben Variante B Dunkelblau (#17406D); nicht gewählt.
+- 2026-11-16: Rubriken: „Nein, die acht passen“. Es bleibt bei Politik, Wirtschaft, Chronik, Wissen, Digital, Kultur, Sport, Meinung. Angeboten und nicht gewählt: Recht, Gesundheit (eigene Rubrik), Leben.
+- 2026-11-16: Rubriken: „Logisch ist, dass Wirtschaft ein Teil drin sein soll und Politik. Ja, den Rest lasse ich mal dir zur Verfügung.“ Claude hat dazu vorgeschlagen: Chronik, Wissen, Digital, Kultur, Sport, Meinung.
 - 2026-11-16: „Baue mir eine Website … auf der Website soll es um News gehen. Orientiere dich gerne an klassischen News-Websites.“ Gebaut mit dem Skill website-bauen.
 
 ## Vorschläge von Claude, die noch bestätigt werden müssen
 
-- Name „Der Überblick“ und Unterzeile „Nachrichten aus Österreich und der Welt“ (Arbeitstitel)
-- Akzentfarbe Rot (#B3121E), gezeigt neben Variante B Dunkelblau (#17406D)
-- Rubriken mit ihren Beschreibungen (stehen in `werkzeuge/portal.json`)
+- Name „Der Überblick“ und Unterzeile „Nachrichten aus Österreich und der Welt“ (Arbeitstitel, Entscheidung zusammen mit der Domain)
+- Beschreibungen der Rubriken (Wortlaut von Claude, stehen in `werkzeuge/portal.json`)
 - Themen im Kontaktformular: Hinweis an die Redaktion, Leserbrief, Korrektur, Sonstiges (gleich in `public/api/contact.php`, ALLOWED_TOPICS)
 - Aufbau der Startseite: Aufmacher mit „Neueste Meldungen“ daneben, dann je Rubrik ein großer Artikel und eine Liste, Meinung als graue Fläche am Ende
 
@@ -81,9 +83,9 @@ Jeder Dienst lädt erst nach Zustimmung und hat einen eigenen Schalter im Cookie
 
 ## Offene Punkte
 
-- [ ] Name des Portals und Unterzeile (Arbeitstitel „Der Überblick“)
-- [ ] Akzentfarbe: Rot (A) oder Dunkelblau (B)
-- [ ] Rubriken bestätigen oder ändern
+- [ ] Name des Portals und Unterzeile (Arbeitstitel „Der Überblick“), zusammen mit der Domain
+- [x] Akzentfarbe: Rot (entschieden 2026-11-16)
+- [x] Rubriken: die acht bleiben (entschieden 2026-11-16)
 - [ ] Domain und Hosting
 - [ ] Texte für Impressum und Datenschutzerklärung vom Auftraggeber
 - [ ] Kontaktdaten der Redaktion (Adresse, Telefon, E-Mail) und Empfängeradresse des Formulars
