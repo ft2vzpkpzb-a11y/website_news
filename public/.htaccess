@@ -73,12 +73,12 @@ ErrorDocument 410 /404.html
 
 # Schutz-Einstellungen (Sicherheits-Header).
 # Die Content-Security-Policy sagt dem Browser, von welchen Servern er Inhalte
-# laden darf: hier nur vom eigenen Server, dazu die Google-Karte als Rahmen
-# (lädt erst nach Zustimmung). Kommt ein Dienst dazu, werden genau dessen
+# laden darf: hier nur vom eigenen Server (keine Dienste von Dritten, auch keine
+# Karte). Kommt ein Dienst dazu (Video, Statistik, Werbung), werden genau dessen
 # Adressen ergänzt (siehe references/technik.md im Skill website-bauen) und
 # der Dienst in Cookie-Fenster und Datenschutzerklärung aufgenommen.
 <IfModule mod_headers.c>
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

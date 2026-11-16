@@ -1,0 +1,53 @@
+{
+  "name": "Der Überblick",
+  "unterzeile": "Nachrichten aus Österreich und der Welt",
+  "domain": "",
+  "rubriken": [
+    {
+      "adresse": "politik",
+      "name": "Politik",
+      "beschreibung": "Innenpolitik, Europa und die Welt: Entscheidungen, Hintergründe und Analysen."
+    },
+    {
+      "adresse": "wirtschaft",
+      "name": "Wirtschaft",
+      "beschreibung": "Unternehmen, Märkte, Arbeit und Geld: was die Wirtschaft in Österreich und der Welt bewegt."
+    },
+    {
+      "adresse": "chronik",
+      "name": "Chronik",
+      "beschreibung": "Was in Österreich passiert: Gerichte, Polizei, Unglücke, Wetter und Gesellschaft."
+    },
+    {
+      "adresse": "wissen",
+      "name": "Wissen",
+      "beschreibung": "Forschung, Gesundheit, Umwelt und Bildung verständlich erklärt."
+    },
+    {
+      "adresse": "digital",
+      "name": "Digital",
+      "beschreibung": "Technik, Internet und künstliche Intelligenz: was sich im digitalen Alltag ändert."
+    },
+    {
+      "adresse": "kultur",
+      "name": "Kultur",
+      "beschreibung": "Bühne, Film, Musik, Literatur und Kunst."
+    },
+    {
+      "adresse": "sport",
+      "name": "Sport",
+      "beschreibung": "Fußball, Wintersport und die großen Ereignisse des Sports."
+    },
+    {
+      "adresse": "meinung",
+      "name": "Meinung",
+      "beschreibung": "Kommentare, Analysen und Gastbeiträge zu den Themen der Zeit.",
+      "stil": "meinung",
+      "auf_startseite": 4
+    }
+  ],
+  "startseite": {
+    "neueste_meldungen": 7,
+    "artikel_je_rubrik": 5
+  }
+}

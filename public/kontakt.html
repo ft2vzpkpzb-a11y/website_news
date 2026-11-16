@@ -3,30 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kontakt | [[NAME]]</title>
-<meta name="description" content="[[BESCHREIBUNG DER KONTAKTSEITE, ein Satz mit Adresse und Telefon]]">
+<title>Kontakt | Der Überblick</title>
+<meta name="description" content="Kontakt zur Redaktion von Der Überblick: Hinweise, Leserbriefe und Korrekturen.">
 <!-- GEMEINSAM:kopf -->
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/style.css?v=2026-11-16">
+<link rel="stylesheet" href="/assets/css/style.css?v=2026-11-16-3">
 <!-- /GEMEINSAM:kopf -->
 </head>
 <body>
 
 <!-- GEMEINSAM:kopfzeile -->
 <header class="site-header">
-  <div class="container">
-    <a href="/" class="brand">
-      <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
-    </a>
-    <nav class="main-nav" id="main-nav">
-      <ul>
-        <li><a href="/">Startseite</a></li>
-        <li><a href="/kontakt" class="is-active" aria-current="page">Kontakt</a></li>
-      </ul>
-      <a href="/kontakt" class="btn btn--primary">Termin vereinbaren</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
+  <div class="masthead">
+    <div class="container masthead__inner">
+      <p class="masthead__date" id="heute"></p>
+      <a href="/" class="brand">
+        <span class="brand-text">Der Überblick<span>Nachrichten aus Österreich und der Welt</span></span>
+      </a>
+      <div class="masthead__aside">
+        <a href="/kontakt" class="masthead__link">Kontakt</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span></span></button>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="container navbar__inner">
+      <a href="/" class="navbar__brand" tabindex="-1" aria-hidden="true">Der Überblick</a>
+      <nav class="main-nav" id="main-nav" aria-label="Rubriken">
+        <ul>
+          <li class="nav-only-mobile"><a href="/">Startseite</a></li>
+          <li><a href="/politik">Politik</a></li>
+          <li><a href="/wirtschaft">Wirtschaft</a></li>
+          <li><a href="/chronik">Chronik</a></li>
+          <li><a href="/wissen">Wissen</a></li>
+          <li><a href="/digital">Digital</a></li>
+          <li><a href="/kultur">Kultur</a></li>
+          <li><a href="/sport">Sport</a></li>
+          <li><a href="/meinung">Meinung</a></li>
+          <li class="nav-only-mobile"><a href="/kontakt" class="is-active" aria-current="page">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 <div class="nav-scrim" id="nav-scrim"></div>
@@ -37,8 +55,8 @@
   <section class="page-hero">
     <div class="container">
       <div class="eyebrow">Kontakt</div>
-      <h1>[[ÜBERSCHRIFT KONTAKT]]</h1>
-      <p>[[EINLEITUNG, höchstens zwei Zeilen]]</p>
+      <h1>Schreiben Sie der Redaktion</h1>
+      <p>Hinweise, Leserbriefe und Korrekturen: Nutzen Sie dafür bitte das Formular.</p>
     </div>
   </section>
 
@@ -46,10 +64,10 @@
     <div class="container">
       <div class="split">
 
-        <div class="reveal">
+        <div>
           <div class="contact-card">
-            <h3>Kontaktformular</h3>
-            <p>Füllen Sie das Formular aus, wir melden uns bei Ihnen möglichst rasch.</p>
+            <h2 class="contact-title">Nachricht an die Redaktion</h2>
+            <p>Felder mit <span class="req">*</span> sind Pflichtfelder.</p>
             <form id="contact-form" novalidate>
               <div class="form-grid">
                 <div class="form-field">
@@ -71,8 +89,9 @@
                   <!-- Die Einträge müssen Wort für Wort zu ALLOWED_TOPICS in api/contact.php passen -->
                   <select id="topic" name="topic">
                     <option value="">Bitte auswählen</option>
-                    <option>Allgemeine Anfrage</option>
-                    <option>Terminanfrage</option>
+                    <option>Hinweis an die Redaktion</option>
+                    <option>Leserbrief</option>
+                    <option>Korrektur</option>
                     <option>Sonstiges</option>
                   </select>
                 </div>
@@ -94,16 +113,16 @@
               </label>
               <p class="form-error" id="privacy-error" hidden>Bitte bestätigen Sie die Datenschutzerklärung, damit wir Ihre Anfrage bearbeiten dürfen.</p>
 
-              <div class="hero-actions">
-                <button type="submit" class="btn btn--primary btn--block">Anfrage senden</button>
+              <div class="form-actions">
+                <button type="submit" class="btn btn--primary btn--block">Nachricht senden</button>
               </div>
               <div class="form-status" id="form-status" role="status"></div>
             </form>
           </div>
         </div>
 
-        <div class="reveal">
-          <h3>[[NAME]]</h3>
+        <div class="contact-aside">
+          <h2 class="contact-title">Redaktion</h2>
           <div class="contact-info-list">
             <div class="contact-info-item">
               <span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></span>
@@ -123,22 +142,8 @@
               <span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4V7Z" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg></span>
               <div>
                 <strong>E-Mail</strong>
-                <a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a>
+                <a href="mailto:[[E-MAIL DER REDAKTION]]">[[E-MAIL DER REDAKTION]]</a>
               </div>
-            </div>
-          </div>
-
-          <!-- Die Karte lädt erst nach Zustimmung (Schalter „Google Maps“ im Cookie-Fenster oder
-               Knopf „Karte laden“). Deshalb steht ihre Adresse als data-map-src, nie als <iframe src>.
-               Als Ziel die Adresse des Eingangs angeben, damit Besucher hinfinden. -->
-          <div class="map-wrap"
-               data-map-src="https://www.google.com/maps?q=[[ADRESSE FÜR DIE KARTE, URL-kodiert]]&amp;z=17&amp;output=embed"
-               data-map-title="Standort [[NAME]]">
-            <div class="map-placeholder">
-              <strong>Karte von Google Maps</strong>
-              <p>Die Karte wird erst mit Ihrer Zustimmung geladen. Dabei wird Ihre IP-Adresse an Google übermittelt.</p>
-              <button type="button" class="btn btn--primary" data-map-enable>Karte laden</button>
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=[[ADRESSE FÜR DIE KARTE, URL-kodiert]]" target="_blank" rel="noopener">In Google Maps öffnen</a>
             </div>
           </div>
         </div>
@@ -160,28 +165,32 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="brand">
-          <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
+          <span class="brand-text">Der Überblick<span>Nachrichten aus Österreich und der Welt</span></span>
         </a>
-        <p>[[KURZBESCHREIBUNG, ein bis zwei Sätze]]</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="/">Startseite</a></li>
-          <li><a href="/kontakt">Kontakt</a></li>
+        <h4>Rubriken</h4>
+        <ul class="footer-list--columns">
+          <li><a href="/politik">Politik</a></li>
+          <li><a href="/wirtschaft">Wirtschaft</a></li>
+          <li><a href="/chronik">Chronik</a></li>
+          <li><a href="/wissen">Wissen</a></li>
+          <li><a href="/digital">Digital</a></li>
+          <li><a href="/kultur">Kultur</a></li>
+          <li><a href="/sport">Sport</a></li>
+          <li><a href="/meinung">Meinung</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Kontakt</h4>
+        <h4>Redaktion</h4>
         <ul>
-          <li>[[STRASSE]]<br>[[PLZ ORT]]</li>
-          <li><a href="tel:[[TELEFON-LINK]]">[[TELEFON]]</a></li>
-          <li><a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a></li>
+          <li><a href="/kontakt">Kontakt und Hinweise</a></li>
+          <li><a href="mailto:[[E-MAIL DER REDAKTION]]">[[E-MAIL DER REDAKTION]]</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> [[NAME]]</span>
+      <span>© <span id="year"></span> Der Überblick</span>
       <div class="legal-links">
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutzerklärung</a>
@@ -202,31 +211,13 @@
     </div>
     <p>Wir verwenden Cookies, um Ihr Erlebnis zu verbessern, während Sie unsere Website nutzen. Die als notwendig kategorisierten Cookies werden benötigt, um die korrekte Funktionalität der Website sicherzustellen. Mehr Informationen finden Sie in unserer <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> (öffnet in einem neuen Tab).</p>
 
+    <!-- Dienste von Dritten (Videos, Statistik, Werbung …) bekommen hier je einen
+         eigenen Schalter, siehe references/technik.md im Skill website-bauen. -->
     <div class="cookie-categories" id="cookie-categories" hidden>
       <div class="cookie-category">
         <div class="cookie-category__row">
           <span class="cookie-category__name">Technisch notwendige</span>
           <span class="cookie-category__badge">Immer aktiv</span>
-        </div>
-      </div>
-
-      <div class="cookie-category">
-        <div class="cookie-category__row">
-          <button type="button" class="cookie-category__disclosure" data-cookie-disclosure aria-expanded="false">
-            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Google Maps</span>
-          </button>
-          <label class="cookie-switch">
-            <input type="checkbox" data-cookie-category="maps">
-            <span class="cookie-switch__track"></span>
-            <span class="sr-only">Google Maps aktivieren</span>
-          </label>
-        </div>
-        <div class="cookie-category__details">
-          <div class="cookie-detail-row"><span>Name</span><span>Google Maps</span></div>
-          <div class="cookie-detail-row"><span>Anbieter</span><span>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland</span></div>
-          <div class="cookie-detail-row"><span>Zweck</span><span>Zeigt auf der Kontaktseite eine Karte mit unserem Standort. Beim Laden der Karte wird Ihre IP-Adresse an Google übermittelt, und Google kann Cookies setzen.</span></div>
-          <div class="cookie-detail-row"><span>Datenschutzerklärung</span><span><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de</a></span></div>
         </div>
       </div>
     </div>
@@ -246,7 +237,7 @@
 <!-- /GEMEINSAM:cookie -->
 
 <!-- GEMEINSAM:skript -->
-<script src="/assets/js/main.js?v=2026-11-16"></script>
+<script src="/assets/js/main.js?v=2026-11-16-3"></script>
 <!-- /GEMEINSAM:skript -->
 </body>
 </html>

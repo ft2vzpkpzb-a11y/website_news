@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de" data-menue="/{{rubrik_adresse}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{vermerk}}
+<title>{{titel}} | {{name}}</title>
+<meta name="description" content="{{beschreibung}}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{name}}">
+<meta property="og:title" content="{{titel}}">
+<meta property="og:description" content="{{beschreibung}}">
+{{og_zusatz}}<!-- GEMEINSAM:kopf -->
+<!-- /GEMEINSAM:kopf -->
+</head>
+<body>
+
+<!-- GEMEINSAM:kopfzeile -->
+<!-- /GEMEINSAM:kopfzeile -->
+
+<main>
+  <article class="article">
+    <div class="container container--narrow">
+      <nav class="breadcrumb" aria-label="Sie sind hier">
+        <a href="/">Startseite</a><span aria-hidden="true">›</span><a href="/{{rubrik_adresse}}">{{rubrik_name}}</a>
+      </nav>
+      <header class="article__header">
+        {{dachzeile}}
+        <h1 class="article__title">{{titel}}</h1>
+        <p class="article__lede">{{vorspann}}</p>
+      </header>
+      <p class="article__meta">{{autor}}<span>{{datum}}</span>{{aktualisiert}}<span>{{lesezeit}}</span></p>
+{{figur}}
+      <div class="article__body">
+{{text}}
+      </div>
+    </div>
+  </article>
+{{mehr}}
+</main>
+
+<!-- GEMEINSAM:fusszeile -->
+<!-- /GEMEINSAM:fusszeile -->
+
+<!-- GEMEINSAM:cookie -->
+<!-- /GEMEINSAM:cookie -->
+
+<!-- GEMEINSAM:skript -->
+<!-- /GEMEINSAM:skript -->
+</body>
+</html>

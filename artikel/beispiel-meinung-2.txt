@@ -1,0 +1,12 @@
+Titel: [[Leitartikel zu einer politischen Entscheidung]]
+Dachzeile: Leitartikel
+Rubrik: Meinung
+Datum: 2026-11-16 06:30
+Autor: [[Autorin oder Autor]]
+Vorspann: [[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]
+
+[[Erster Absatz: die These des Beitrags, klar und begründet.]]
+
+[[Zweiter Absatz: Argumente, Beispiele und Gegenargumente.]]
+
+[[Letzter Absatz: die Schlussfolgerung.]]

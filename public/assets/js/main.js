@@ -24,6 +24,14 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Datum im Zeitungskopf („Montag, 16. November 2026“) ---------- */
+  var heuteEl = document.getElementById('heute');
+  if (heuteEl) {
+    try {
+      heuteEl.textContent = new Date().toLocaleDateString('de-AT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (e) { /* sehr alter Browser: Die Zeile bleibt leer */ }
+  }
+
   /* ---------- Hero-Diashow ---------- */
   var slideshow = document.getElementById('hero-slideshow');
   if (slideshow) {
@@ -549,6 +557,8 @@
   if (form) {
     var statusBox = document.getElementById('form-status');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn ? submitBtn.textContent : '';
+    var FAIL_MESSAGE = 'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns eine E-Mail.';
 
     function setStatus(message, type) {
       if (!statusBox) return;
@@ -653,19 +663,19 @@
         })
         .then(function (result) {
           if (result.ok) {
-            setStatus('Vielen Dank! Ihre Anfrage wurde übermittelt. Wir melden uns so rasch wie möglich.', 'success');
+            setStatus('Vielen Dank! Ihre Nachricht wurde an die Redaktion übermittelt.', 'success');
             form.reset();
             reportConversion('anfrage'); // nur nach erfolgreichem Versand
           } else {
-            setStatus(result.body && result.body.error ? result.body.error : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.', 'error');
+            setStatus(result.body && result.body.error ? result.body.error : FAIL_MESSAGE, 'error');
           }
         })
         .catch(function () {
-          setStatus('Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.', 'error');
+          setStatus(FAIL_MESSAGE, 'error');
         })
         .finally(function () {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Anfrage senden';
+          submitBtn.textContent = submitLabel;
         });
     });
   }

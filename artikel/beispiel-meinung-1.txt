@@ -1,0 +1,12 @@
+Titel: [[Kommentar zum Thema der Woche]]
+Dachzeile: Kommentar
+Rubrik: Meinung
+Datum: 2026-11-16 13:55
+Autor: [[Autorin oder Autor]]
+Vorspann: [[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]
+
+[[Erster Absatz: die These des Beitrags, klar und begründet.]]
+
+[[Zweiter Absatz: Argumente, Beispiele und Gegenargumente.]]
+
+[[Letzter Absatz: die Schlussfolgerung.]]

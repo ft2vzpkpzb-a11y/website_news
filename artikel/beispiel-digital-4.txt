@@ -1,0 +1,21 @@
+Titel: [[Schlagzeile zu sozialen Netzwerken]]
+Dachzeile: [[Stichwort]]
+Rubrik: Digital
+Datum: 2026-11-14 15:15
+Autor: [[Autorin oder Autor]]
+Vorspann: [[Vorspann: zwei bis drei Sätze, die das Wichtigste zusammenfassen. Wer nur diesen Absatz liest, weiß, worum es geht.]]
+Bild: platzhalter
+Bildtext: [[Bildtext: Was ist auf dem Foto zu sehen?]]
+Bildnachweis: [[Fotograf oder Agentur]]
+
+[[Erster Absatz: der Einstieg in die Geschichte mit den wichtigsten Tatsachen. Wer hat was getan, wann, wo und warum?]]
+
+[[Zweiter Absatz: Hintergründe und Zusammenhänge. Kurze Absätze lesen sich am Handy besser.]]
+
+## [[Zwischentitel]]
+
+[[Dritter Absatz: weitere Einzelheiten, Stimmen von Beteiligten, Zahlen mit Quelle.]]
+
+> [[Ein wörtliches Zitat einer beteiligten Person.]]
+
+[[Letzter Absatz: Wie geht es weiter, und was ist als Nächstes geplant?]]

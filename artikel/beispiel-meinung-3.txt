@@ -1,0 +1,12 @@
+Titel: [[Gastbeitrag einer Expertin oder eines Experten]]
+Dachzeile: Gastbeitrag
+Rubrik: Meinung
+Datum: 2026-11-15 09:00
+Autor: [[Autorin oder Autor]]
+Vorspann: [[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]
+
+[[Erster Absatz: die These des Beitrags, klar und begründet.]]
+
+[[Zweiter Absatz: Argumente, Beispiele und Gegenargumente.]]
+
+[[Letzter Absatz: die Schlussfolgerung.]]

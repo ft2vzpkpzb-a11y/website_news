@@ -3,103 +3,505 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>[[NAME]] | [[KURZTITEL DER STARTSEITE]]</title>
-<meta name="description" content="[[BESCHREIBUNG FÜR SUCHMASCHINEN, ein bis zwei Sätze]]">
+<title>Der Überblick | Nachrichten aus Österreich und der Welt</title>
+<meta name="description" content="Aktuelle Nachrichten aus Politik, Wirtschaft, Chronik, Wissen, Digital, Kultur und Sport, dazu Kommentare und Analysen.">
 <!-- GEMEINSAM:kopf -->
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/style.css?v=2026-11-16">
+<link rel="stylesheet" href="/assets/css/style.css?v=2026-11-16-3">
 <!-- /GEMEINSAM:kopf -->
 </head>
 <body>
 
 <!-- GEMEINSAM:kopfzeile -->
 <header class="site-header">
-  <div class="container">
-    <a href="/" class="brand">
-      <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
-    </a>
-    <nav class="main-nav" id="main-nav">
-      <ul>
-        <li><a href="/" class="is-active" aria-current="page">Startseite</a></li>
-        <li><a href="/kontakt">Kontakt</a></li>
-      </ul>
-      <a href="/kontakt" class="btn btn--primary">Termin vereinbaren</a>
-    </nav>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
+  <div class="masthead">
+    <div class="container masthead__inner">
+      <p class="masthead__date" id="heute"></p>
+      <a href="/" class="brand">
+        <span class="brand-text">Der Überblick<span>Nachrichten aus Österreich und der Welt</span></span>
+      </a>
+      <div class="masthead__aside">
+        <a href="/kontakt" class="masthead__link">Kontakt</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span></span></button>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="container navbar__inner">
+      <a href="/" class="navbar__brand" tabindex="-1" aria-hidden="true">Der Überblick</a>
+      <nav class="main-nav" id="main-nav" aria-label="Rubriken">
+        <ul>
+          <li class="nav-only-mobile"><a href="/" class="is-active" aria-current="page">Startseite</a></li>
+          <li><a href="/politik">Politik</a></li>
+          <li><a href="/wirtschaft">Wirtschaft</a></li>
+          <li><a href="/chronik">Chronik</a></li>
+          <li><a href="/wissen">Wissen</a></li>
+          <li><a href="/digital">Digital</a></li>
+          <li><a href="/kultur">Kultur</a></li>
+          <li><a href="/sport">Sport</a></li>
+          <li><a href="/meinung">Meinung</a></li>
+          <li class="nav-only-mobile"><a href="/kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 <div class="nav-scrim" id="nav-scrim"></div>
 <!-- /GEMEINSAM:kopfzeile -->
 
 <main>
-
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">[[ÜBERZEILE]]</div>
-      <h1>[[HAUPTÜBERSCHRIFT]]</h1>
-      <p class="lede">[[EINLEITUNG, höchstens zwei Zeilen]]</p>
-      <div class="hero-actions">
-        <a href="/kontakt" class="btn btn--primary">Termin vereinbaren</a>
-        <a href="tel:[[TELEFON-LINK]]" class="btn btn--outline">[[TELEFON]]</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head center">
-        <div class="eyebrow">[[ÜBERZEILE ABSCHNITT]]</div>
-        <h2>[[ÜBERSCHRIFT ABSCHNITT]]</h2>
-      </div>
-      <div class="card-grid">
-
-        <article class="card reveal">
-          <div class="card__body">
-            <span class="card__tag">[[RUBRIK 1]]</span>
-            <h3>[[ÜBERSCHRIFT KARTE 1]]</h3>
-            <p>[[TEXT KARTE 1, zwei bis drei Sätze]]</p>
-            <a class="card__link" href="/kontakt">Mehr erfahren <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card__body">
-            <span class="card__tag">[[RUBRIK 2]]</span>
-            <h3>[[ÜBERSCHRIFT KARTE 2]]</h3>
-            <p>[[TEXT KARTE 2, zwei bis drei Sätze]]</p>
-            <a class="card__link" href="/kontakt">Mehr erfahren <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card__body">
-            <span class="card__tag">[[RUBRIK 3]]</span>
-            <h3>[[ÜBERSCHRIFT KARTE 3]]</h3>
-            <p>[[TEXT KARTE 3, zwei bis drei Sätze]]</p>
-            <a class="card__link" href="/kontakt">Mehr erfahren <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="container">
-      <div class="cta-banner reveal">
-        <div>
-          <h2>[[ÜBERSCHRIFT KONTAKT-BANNER]]</h2>
-          <p>[[TEXT KONTAKT-BANNER, ein Satz]]</p>
+  <!-- Der folgende Bereich entsteht mit werkzeuge/artikel_bauen.py aus den Artikeln
+       im Ordner artikel/. Nicht von Hand ändern: Änderungen gingen beim nächsten Bauen verloren.
+       Die Hauptüberschrift (h1) der Startseite ist die Schlagzeile des Aufmachers. -->
+  <!-- AUTO:startseite -->
+  <section class="top-news">
+    <div class="container top-news__grid">
+      <article class="news-card news-card--lead">
+        <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+        <div class="news-card__body">
+          <p class="news-card__kicker">[[Stichwort]]</p>
+          <h1 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-1">[[Aufmacher: Schlagzeile zum wichtigsten Thema des Tages]]</a></h1>
+          <p class="news-card__lede">[[Vorspann: zwei bis drei Sätze, die das Wichtigste zusammenfassen. Wer nur diesen Absatz liest, weiß, worum es geht.]]</p>
+          <p class="news-card__meta">Politik · <time datetime="2026-11-16T16:40">16.11.2026</time></p>
         </div>
-        <div class="cta-banner-actions">
-          <a href="/kontakt" class="btn btn--primary">Kontakt aufnehmen</a>
-          <a href="tel:[[TELEFON-LINK]]" class="btn btn--ghost">[[TELEFON]]</a>
+      </article>
+      <aside class="latest" aria-labelledby="neueste-meldungen">
+        <h2 class="latest__title" id="neueste-meldungen">Neueste Meldungen</h2>
+        <ol class="latest__list">
+          <li><a class="latest__item" href="/beispiel-wirtschaft-1"><time class="latest__when" datetime="2026-11-16T16:15"><strong>16.15</strong>16.11.</time><span class="latest__rubric">Wirtschaft</span><span class="latest__headline">[[Schlagzeile zu den neuen Zahlen zur Teuerung]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-chronik-1"><time class="latest__when" datetime="2026-11-16T15:50"><strong>15.50</strong>16.11.</time><span class="latest__rubric">Chronik</span><span class="latest__headline">[[Schlagzeile zu einem Prozess am Landesgericht]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-sport-1"><time class="latest__when" datetime="2026-11-16T15:30"><strong>15.30</strong>16.11.</time><span class="latest__rubric">Sport</span><span class="latest__headline">[[Schlagzeile zum Spieltag in der Bundesliga]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-digital-1"><time class="latest__when" datetime="2026-11-16T15:05"><strong>15.05</strong>16.11.</time><span class="latest__rubric">Digital</span><span class="latest__headline">[[Schlagzeile zu künstlicher Intelligenz im Alltag]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-kultur-1"><time class="latest__when" datetime="2026-11-16T14:45"><strong>14.45</strong>16.11.</time><span class="latest__rubric">Kultur</span><span class="latest__headline">[[Schlagzeile zu einer Premiere im Theater]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-wissen-1"><time class="latest__when" datetime="2026-11-16T14:20"><strong>14.20</strong>16.11.</time><span class="latest__rubric">Wissen</span><span class="latest__headline">[[Schlagzeile zu einer neuen Studie]]</span></a></li>
+          <li><a class="latest__item" href="/beispiel-meinung-1"><time class="latest__when" datetime="2026-11-16T13:55"><strong>13.55</strong>16.11.</time><span class="latest__rubric">Meinung</span><span class="latest__headline">[[Kommentar zum Thema der Woche]]</span></a></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-politik">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-politik"><a href="/politik">Politik</a></h2>
+        <a class="section-head__more" href="/politik">Alle Artikel<span class="sr-only"> aus Politik</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-2">[[Schlagzeile zu einer Abstimmung im Nationalrat]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T11:20">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-3">[[Schlagzeile zu einem Gipfeltreffen der Staaten der EU]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T17:05">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-4">[[Schlagzeile zu einer Wahl im Ausland]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T09:30">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-5">[[Schlagzeile zu einem neuen Gesetz und was es für den Alltag bedeutet]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T18:10">14.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-politik-6">[[Schlagzeile zu einem Interview mit einer Ministerin oder einem Minister]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-13T17:20">13.11.2026</time></p>
+            </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="rubric-block" aria-labelledby="rubrik-wirtschaft">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-wirtschaft"><a href="/wirtschaft">Wirtschaft</a></h2>
+        <a class="section-head__more" href="/wirtschaft">Alle Artikel<span class="sr-only"> aus Wirtschaft</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wirtschaft-1">[[Schlagzeile zu den neuen Zahlen zur Teuerung]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T16:15">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wirtschaft-2">[[Schlagzeile zu einem großen Unternehmen aus Österreich]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T10:45">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wirtschaft-3">[[Schlagzeile zur Lage auf dem Arbeitsmarkt]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T15:40">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wirtschaft-4">[[Schlagzeile zu Börse und Zinsen]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T08:50">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wirtschaft-5">[[Schlagzeile zu Wohnen und Mieten]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T10:15">14.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-chronik">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-chronik"><a href="/chronik">Chronik</a></h2>
+        <a class="section-head__more" href="/chronik">Alle Artikel<span class="sr-only"> aus Chronik</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-chronik-1">[[Schlagzeile zu einem Prozess am Landesgericht]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T15:50">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-chronik-2">[[Schlagzeile zu einem Einsatz von Polizei oder Feuerwehr]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T09:55">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-chronik-3">[[Schlagzeile zum Wetter der kommenden Tage]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T14:20">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-chronik-4">[[Schlagzeile zu einem Thema aus den Bundesländern]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T07:45">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-chronik-5">[[Schlagzeile zu Verkehr und Baustellen]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T09:20">14.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-wissen">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-wissen"><a href="/wissen">Wissen</a></h2>
+        <a class="section-head__more" href="/wissen">Alle Artikel<span class="sr-only"> aus Wissen</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wissen-1">[[Schlagzeile zu einer neuen Studie]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T14:20">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wissen-2">[[Schlagzeile zu Gesundheit und Medizin]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T08:40">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wissen-3">[[Schlagzeile zu Klima und Umwelt]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T13:10">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wissen-4">[[Schlagzeile zu Schule und Universität]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T16:30">14.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-wissen-5">[[Schlagzeile zu einer Entdeckung im Weltall]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-13T15:00">13.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-digital">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-digital"><a href="/digital">Digital</a></h2>
+        <a class="section-head__more" href="/digital">Alle Artikel<span class="sr-only"> aus Digital</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-digital-1">[[Schlagzeile zu künstlicher Intelligenz im Alltag]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T15:05">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-digital-2">[[Schlagzeile zu Datenschutz und Sicherheit im Netz]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T07:30">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-digital-3">[[Schlagzeile zu einem neuen Gerät im Test]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T12:00">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-digital-4">[[Schlagzeile zu sozialen Netzwerken]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T15:15">14.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-digital-5">[[Schlagzeile zu Tipps für das eigene Smartphone]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-13T13:40">13.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-kultur">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-kultur"><a href="/kultur">Kultur</a></h2>
+        <a class="section-head__more" href="/kultur">Alle Artikel<span class="sr-only"> aus Kultur</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-kultur-1">[[Schlagzeile zu einer Premiere im Theater]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T14:45">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-kultur-2">[[Schlagzeile zu einem neuen Film im Kino]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T07:10">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-kultur-3">[[Schlagzeile zu einem Buch, über das man spricht]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T11:25">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-kultur-4">[[Schlagzeile zu einer Ausstellung]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T14:00">14.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-kultur-5">[[Schlagzeile zu einem Konzert oder einer Oper]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-13T12:10">13.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rubric-block" aria-labelledby="rubrik-sport">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-sport"><a href="/sport">Sport</a></h2>
+        <a class="section-head__more" href="/sport">Alle Artikel<span class="sr-only"> aus Sport</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="rubric-block__grid">
+        <article class="news-card news-card--big">
+          <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+          <div class="news-card__body">
+            <p class="news-card__kicker">[[Stichwort]]</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-sport-1">[[Schlagzeile zum Spieltag in der Bundesliga]]</a></h3>
+            <p class="news-card__lede">[[Vorspann: ein bis zwei Sätze, die neugierig auf den ganzen Artikel machen.]]</p>
+            <p class="news-card__meta"><time datetime="2026-11-16T15:30">16.11.2026</time></p>
+          </div>
+        </article>
+        <div class="rubric-block__list">
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-sport-2">[[Schlagzeile zum Weltcup im Skisport]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-16T06:50">16.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-sport-3">[[Schlagzeile zu einem Sieg oder einer Niederlage]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-15T10:40">15.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-sport-4">[[Schlagzeile zu einem Wechsel zu einem neuen Verein]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-14T12:45">14.11.2026</time></p>
+            </div>
+          </article>
+          <article class="news-card news-card--compact">
+            <div class="news-card__media"><div class="media-placeholder" role="img" aria-label="Platzhalter für ein Foto"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span>[[Foto]]</span></div></div>
+            <div class="news-card__body">
+              <p class="news-card__kicker">[[Stichwort]]</p>
+              <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-sport-5">[[Schlagzeile zu Tennis, Formel 1 oder einem anderen Sport]]</a></h3>
+              <p class="news-card__meta"><time datetime="2026-11-13T20:30">13.11.2026</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="opinion-block" aria-labelledby="rubrik-meinung">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="rubrik-meinung"><a href="/meinung">Meinung</a></h2>
+        <a class="section-head__more" href="/meinung">Alle Artikel<span class="sr-only"> aus Meinung</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="opinion-grid">
+        <article class="news-card news-card--opinion">
+          <div class="news-card__body">
+            <p class="news-card__kicker">Kommentar</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-meinung-1">[[Kommentar zum Thema der Woche]]</a></h3>
+            <p class="news-card__lede">[[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]</p>
+            <p class="news-card__author">[[Autorin oder Autor]]</p>
+          </div>
+        </article>
+        <article class="news-card news-card--opinion">
+          <div class="news-card__body">
+            <p class="news-card__kicker">Leitartikel</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-meinung-2">[[Leitartikel zu einer politischen Entscheidung]]</a></h3>
+            <p class="news-card__lede">[[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]</p>
+            <p class="news-card__author">[[Autorin oder Autor]]</p>
+          </div>
+        </article>
+        <article class="news-card news-card--opinion">
+          <div class="news-card__body">
+            <p class="news-card__kicker">Gastbeitrag</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-meinung-3">[[Gastbeitrag einer Expertin oder eines Experten]]</a></h3>
+            <p class="news-card__lede">[[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]</p>
+            <p class="news-card__author">[[Autorin oder Autor]]</p>
+          </div>
+        </article>
+        <article class="news-card news-card--opinion">
+          <div class="news-card__body">
+            <p class="news-card__kicker">Analyse</p>
+            <h3 class="news-card__title"><a class="news-card__link" href="/beispiel-meinung-4">[[Analyse zu einer Entwicklung in der Wirtschaft]]</a></h3>
+            <p class="news-card__lede">[[Kurzer Anriss: die Haltung des Beitrags in einem Satz.]]</p>
+            <p class="news-card__author">[[Autorin oder Autor]]</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- /AUTO:startseite -->
 </main>
 
 <!-- GEMEINSAM:fusszeile -->
@@ -113,28 +515,32 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="brand">
-          <span class="brand-text">[[NAME]]<span>[[UNTERZEILE]]</span></span>
+          <span class="brand-text">Der Überblick<span>Nachrichten aus Österreich und der Welt</span></span>
         </a>
-        <p>[[KURZBESCHREIBUNG, ein bis zwei Sätze]]</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="/">Startseite</a></li>
-          <li><a href="/kontakt">Kontakt</a></li>
+        <h4>Rubriken</h4>
+        <ul class="footer-list--columns">
+          <li><a href="/politik">Politik</a></li>
+          <li><a href="/wirtschaft">Wirtschaft</a></li>
+          <li><a href="/chronik">Chronik</a></li>
+          <li><a href="/wissen">Wissen</a></li>
+          <li><a href="/digital">Digital</a></li>
+          <li><a href="/kultur">Kultur</a></li>
+          <li><a href="/sport">Sport</a></li>
+          <li><a href="/meinung">Meinung</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Kontakt</h4>
+        <h4>Redaktion</h4>
         <ul>
-          <li>[[STRASSE]]<br>[[PLZ ORT]]</li>
-          <li><a href="tel:[[TELEFON-LINK]]">[[TELEFON]]</a></li>
-          <li><a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a></li>
+          <li><a href="/kontakt">Kontakt und Hinweise</a></li>
+          <li><a href="mailto:[[E-MAIL DER REDAKTION]]">[[E-MAIL DER REDAKTION]]</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> [[NAME]]</span>
+      <span>© <span id="year"></span> Der Überblick</span>
       <div class="legal-links">
         <a href="/impressum">Impressum</a>
         <a href="/datenschutz">Datenschutzerklärung</a>
@@ -155,31 +561,13 @@
     </div>
     <p>Wir verwenden Cookies, um Ihr Erlebnis zu verbessern, während Sie unsere Website nutzen. Die als notwendig kategorisierten Cookies werden benötigt, um die korrekte Funktionalität der Website sicherzustellen. Mehr Informationen finden Sie in unserer <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> (öffnet in einem neuen Tab).</p>
 
+    <!-- Dienste von Dritten (Videos, Statistik, Werbung …) bekommen hier je einen
+         eigenen Schalter, siehe references/technik.md im Skill website-bauen. -->
     <div class="cookie-categories" id="cookie-categories" hidden>
       <div class="cookie-category">
         <div class="cookie-category__row">
           <span class="cookie-category__name">Technisch notwendige</span>
           <span class="cookie-category__badge">Immer aktiv</span>
-        </div>
-      </div>
-
-      <div class="cookie-category">
-        <div class="cookie-category__row">
-          <button type="button" class="cookie-category__disclosure" data-cookie-disclosure aria-expanded="false">
-            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Google Maps</span>
-          </button>
-          <label class="cookie-switch">
-            <input type="checkbox" data-cookie-category="maps">
-            <span class="cookie-switch__track"></span>
-            <span class="sr-only">Google Maps aktivieren</span>
-          </label>
-        </div>
-        <div class="cookie-category__details">
-          <div class="cookie-detail-row"><span>Name</span><span>Google Maps</span></div>
-          <div class="cookie-detail-row"><span>Anbieter</span><span>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland</span></div>
-          <div class="cookie-detail-row"><span>Zweck</span><span>Zeigt auf der Kontaktseite eine Karte mit unserem Standort. Beim Laden der Karte wird Ihre IP-Adresse an Google übermittelt, und Google kann Cookies setzen.</span></div>
-          <div class="cookie-detail-row"><span>Datenschutzerklärung</span><span><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de</a></span></div>
         </div>
       </div>
     </div>
@@ -199,7 +587,7 @@
 <!-- /GEMEINSAM:cookie -->
 
 <!-- GEMEINSAM:skript -->
-<script src="/assets/js/main.js?v=2026-11-16"></script>
+<script src="/assets/js/main.js?v=2026-11-16-3"></script>
 <!-- /GEMEINSAM:skript -->
 </body>
 </html>

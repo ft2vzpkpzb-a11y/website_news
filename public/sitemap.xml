@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://[[DOMAIN]]/</loc><lastmod>[[DATUM JJJJ-MM-TT]]</lastmod></url>
-  <url><loc>https://[[DOMAIN]]/kontakt</loc><lastmod>[[DATUM JJJJ-MM-TT]]</lastmod></url>
-  <url><loc>https://[[DOMAIN]]/impressum</loc><lastmod>[[DATUM JJJJ-MM-TT]]</lastmod></url>
-  <url><loc>https://[[DOMAIN]]/datenschutz</loc><lastmod>[[DATUM JJJJ-MM-TT]]</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/politik</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/wirtschaft</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/chronik</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/wissen</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/digital</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/kultur</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/sport</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/meinung</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wirtschaft-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-chronik-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-sport-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-digital-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-kultur-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wissen-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-meinung-1</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wirtschaft-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-chronik-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wissen-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-digital-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-kultur-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-sport-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-meinung-2</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wirtschaft-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-chronik-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wissen-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-digital-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-kultur-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-sport-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-4</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-meinung-3</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wirtschaft-4</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-chronik-4</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-5</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wissen-4</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-digital-4</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-kultur-4</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-sport-4</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-meinung-4</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wirtschaft-5</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-chronik-5</loc><lastmod>2026-11-14</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-sport-5</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-politik-6</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-wissen-5</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-digital-5</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/beispiel-kultur-5</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://[[DOMAIN]]/kontakt</loc></url>
+  <url><loc>https://[[DOMAIN]]/impressum</loc></url>
+  <url><loc>https://[[DOMAIN]]/datenschutz</loc></url>
 </urlset>
